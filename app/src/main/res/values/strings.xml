@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ChuckNorris.io</string>
+    <string name="error_categories">Error while retrieving categories</string>
+    <string name="error_joke">Error while retrieving joke</string>
+</resources>
