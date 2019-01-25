@@ -6,7 +6,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-interface JokeModule {
+abstract class JokeModule {
     @Binds
     abstract fun providesPresenter(presenter: JokePresenter): Presenter
 

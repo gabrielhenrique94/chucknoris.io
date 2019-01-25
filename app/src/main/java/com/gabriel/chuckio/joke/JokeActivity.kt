@@ -45,7 +45,7 @@ class JokeActivity : BaseActivity<Presenter>(), JokeContracts.View {
     }
 
     private fun showJoke(joke: Joke) {
-        Picasso.get().load(joke.img_url).into(image_joke_icon)
+        Picasso.get().load(joke.imgUrl).into(image_joke_icon)
         text_joke_link.text = joke.link
         text_joke_content.text = joke.content
     }

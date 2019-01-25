@@ -31,16 +31,6 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseHolder<T>>() {
         notifyItemInserted(position)
     }
 
-    fun remove(obj: T) {
-        val index = items.indices.first { i -> items[i] != null && items[i] == obj }
-        remove(index)
-    }
-
-    fun remove(position: Int) {
-        items.removeAt(position)
-        notifyItemRemoved(position)
-    }
-
     fun clear() {
         val count = items.size
         items.clear()

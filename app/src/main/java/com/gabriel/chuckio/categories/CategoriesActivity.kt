@@ -5,6 +5,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import com.gabriel.chuckio.R
+import com.gabriel.chuckio.R.id.progress_categories
+import com.gabriel.chuckio.R.id.recycler_categories_list
 import com.gabriel.chuckio.base.BaseActivity
 import com.gabriel.chuckio.categories.adapter.CategoriesAdapter
 import com.gabriel.chuckio.extensions.hide
@@ -26,14 +28,11 @@ class CategoriesActivity : BaseActivity<CategoriesContracts.Presenter>(), Catego
         AndroidInjection.inject(this)
         setContentView(R.layout.activity_categories)
         presenter.view = this
+
         initUI()
+
         compositeDisposable.add(
                 presenter.listCategories().subscribe(this::showCategories, this::showErrorMessage))
-    }
-
-    private fun showCategories(categories: List<String>) {
-        adapter.clear()
-        adapter.add(categories)
     }
 
     private fun initUI() {
@@ -42,11 +41,16 @@ class CategoriesActivity : BaseActivity<CategoriesContracts.Presenter>(), Catego
         recycler_categories_list.adapter = adapter
     }
 
+    private fun showCategories(categories: List<String>) {
+        adapter.clear()
+        adapter.add(categories)
+    }
+
     override fun showRandomJoke(category: String) {
         startActivity(JokeActivity.getIntent(this, category))
     }
 
-    fun showErrorMessage(throwable: Throwable) {
+    private fun showErrorMessage(throwable: Throwable) {
         Toast.makeText(this, R.string.error_categories, LENGTH_LONG).show()
     }
 

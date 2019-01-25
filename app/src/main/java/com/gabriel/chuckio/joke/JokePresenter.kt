@@ -1,6 +1,5 @@
 package com.gabriel.chuckio.joke
 
-import com.gabriel.chuckio.categories.CategoriesContracts
 import com.gabriel.chuckio.joke.JokeContracts.Presenter
 import com.gabriel.chuckio.joke.JokeContracts.View
 import com.gabriel.chuckio.joke.dataui.Joke
@@ -21,7 +20,7 @@ class JokePresenter @Inject constructor(val repository: JokeContracts.Repository
                 .map { response ->
                     Joke().apply {
                         this.content = response.value ?: ""
-                        this.img_url = response.iconUrl ?: ""
+                        this.imgUrl = response.iconUrl ?: ""
                         this.link = response.url ?: ""
                     }
                 }
